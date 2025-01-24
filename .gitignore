@@ -92,3 +92,4 @@ coverage.xml
 
 # Other project-specific files:
 local_settings.py
+socialTemplate/
