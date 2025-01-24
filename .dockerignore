@@ -1,0 +1,60 @@
+# Исключаем файлы и папки виртуального окружения
+venv/
+env/
+.myvenv/
+
+# Игнорируем скомпилированные Python файлы
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Исключаем файлы среды разработки
+.idea/
+.vscode/
+*.code-workspace
+
+# Исключаем файлы конфигурации IDE
+*.iml
+*.iws
+
+# Исключаем файлы БД SQLite
+db.sqlite3
+db.sqlite3-journal
+
+# Исключаем логи
+*.log
+
+# Исключаем временные файлы
+*.tmp
+*.swp
+*.swo
+
+# Исключаем настройки локального окружения
+.env
+.env.*
+
+# Исключаем каталоги с медиа и статикой, если они не нужны в образе
+media/
+staticfiles/
+
+# Исключаем миграции, если они не требуются в образе
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Исключаем тестовые и кэш-файлы
+.tox/
+.pytest_cache/
+.coverage
+*.coverage
+nosetests.xml
+coverage.xml
+
+# Исключаем сборочные артефакты Python
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Исключаем системные файлы
+.DS_Store
+Thumbs.db

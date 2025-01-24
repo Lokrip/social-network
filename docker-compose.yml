@@ -1,0 +1,99 @@
+version: '3.8'
+
+services:
+  web-app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/service
+    environment:
+      - DB_HOST=database
+      - DB_NAME=social
+      - DB_USER=dbuser
+      - DB_PASS=pass
+
+      - REDIS_CONTAINER_NAME=redis
+
+    command: >
+      sh -c "
+        make makemigrations &&
+        make migrate &&
+        make run-server
+      "
+
+    depends_on:
+      - database
+      - db_redis
+
+
+  flower:
+    build:
+      context: .
+    volumes:
+      - ./:/service
+    environment:
+      - DB_HOST=database
+      - DB_NAME=social
+      - DB_USER=dbuser
+      - DB_PASS=pass
+      - REDIS_CONTAINER_NAME=redis
+    command: >
+      sh -c "celery -A services flower --port=5555 --broker=redis://redis:6379/0"
+
+    ports:
+      - "5555:5555"
+
+    depends_on:
+      - db_redis
+      - database
+      - celery-worker
+
+  celery-worker:
+    build:
+      context: .
+    volumes:
+      - ./:/service
+    environment:
+      - DB_HOST=database
+      - DB_NAME=social
+      - DB_USER=dbuser
+      - DB_PASS=pass
+
+      - REDIS_CONTAINER_NAME=redis
+    command: >
+      sh -c "
+        celery -A services worker --pool=solo -l info &
+        celery -A services beat -l info
+      "
+
+    depends_on:
+      - db_redis
+      - database
+
+  database:
+    container_name: database-1
+    image: postgres:17-alpine
+    environment:
+      - POSTGRES_DB=social
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=pass
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  db_redis:
+    image: redis:latest
+    container_name: redis
+    volumes:
+      - redis_data:/var/lib/redis/data/
+    ports:
+      - 6379:6379
+    restart: always
+
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -1,0 +1,38 @@
+{% extends 'account/auth.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block classBody %}class="color-theme-blue"{% endblock classBody %}
+
+{% block contentForm %}
+<h2 class="fw-700 display1-size display2-md-size mb-4">Create <br>your account</h2>                        
+<form method="post">
+    {% csrf_token %}
+
+    {% for f in form %}
+        <div class="form-group icon-input mb-3">
+            <i class="{{f.label}}"></i>
+            {{f}}
+        </div>
+    {% endfor %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+
+    <div class="form-check text-left mb-3">
+        <input type="checkbox" class="form-check-input mt-2" id="exampleCheck2">
+        <label class="form-check-label font-xsss text-grey-500" for="exampleCheck2">Accept Term and Conditions</label>
+        <!-- <a href="#" class="fw-600 font-xsss text-grey-700 mt-1 float-right">Forgot your Password?</a> -->
+    </div>
+    
+    <div class="col-sm-12 p-0 text-left">
+        <div class="form-group mb-1"><button type="submit" class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">Register</button></div>
+        <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Already have account <a href="{% url 'account:login' %}" class="fw-700 ms-1">Login</a></h6>
+    </div>
+</form>
+ 
+{% endblock contentForm %}

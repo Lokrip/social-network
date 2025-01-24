@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block addSettingScripts %}
+<script>
+    const chatUuid = "{{ chatname_room }}";
+</script>
+{% endblock addSettingScripts %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<div class="main-content right-chat-active">
+            
+    <div class="middle-sidebar-bottom">
+        <div class="middle-sidebar-left pe-0 ps-lg-3 ms-0 me-0" style="max-width: 100%;">
+            <div class="row">
+                   
+
+                <div class="col-lg-12 position-relative">
+                    <div class="chat-wrapper pt-0 w-100 position-relative scroll-bar bg-white theme-dark-bg">
+                        <div class="chat-body p-3 ">
+                            <div class="messages-content pb-5">
+
+                                {% for messages in messages %}
+                                    {% if request.user == messages.user %}
+                                    <div class="message-item outgoing-message">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="{{messages.user.get_image}}" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5>{{messages.user.username}}</h5>
+                                                <div class="time">01:35 PM</div>
+                                            </div>
+                                        </div>
+                                        <div  class="message-wrap">{{messages.body}}</div>
+                                    </div>
+                                    {% else %}
+                                    <div class="message-item">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="{{messages.user.get_image}}" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5>{{messages.user.username}}</h5>
+                                                <div class="time">01:35 PM</div>
+                                            </div>
+                                        </div>
+                                        <div class="message-wrap">{{messages.body}}</div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-bottom dark-bg p-3 shadow-none theme-dark-bg" style="width: 98%;">
+                        <form style="display: flex; align-items: center;" id="chat-form" class="chat-form">
+                            <button class="bg-grey float-left"><i class="ti-microphone text-grey-600"></i></button>
+                            <input type="text" id="chat-input-body" placeholder="Start typing..">  
+                            <button class="bg-current"><i class="ti-arrow-right text-white"></i></button>
+                        </form>
+                    </div> 
+                </div>
+
+            </div>
+        </div>
+         
+    </div>            
+</div>
+{% endblock content %}

@@ -1,0 +1,94 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+db.sqlite3
+db.sqlite3-journal
+
+# If using SQLite database files:
+*.sqlite3
+
+# Media and static files:
+media/
+staticfiles/
+
+# Environment variables:
+.env
+.env.*
+
+# Virtual environment:
+venv/
+env/
+.myvenv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE-specific files:
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+
+# JetBrains
+*.ipr
+*.iws
+*.idea/
+
+# macOS-specific files:
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows-specific files:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python package files:
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+
+# Testing tools:
+.tox/
+.pytest_cache/
+.coverage
+*.coverage
+nosetests.xml
+coverage.xml
+*.pylint.d
+
+# Migrations:
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Logs and temp files:
+*.log
+*.pot
+*.pid
+*.pyc
+*.pyo
+*.pyd
+
+# Cache files:
+.cache
+*.swp
+*.swo
+*.tmp
+
+# Git-specific files:
+.git/
+*.orig
+
+# Other project-specific files:
+local_settings.py

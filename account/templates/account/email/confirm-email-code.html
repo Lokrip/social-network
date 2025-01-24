@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block styles %}
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+    }
+
+
+    body .code {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        padding: 20px;
+        background: rgb(204, 255, 170);
+        border-radius: 10px;
+    }
+
+    body .code h1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 32px;
+    }
+    
+</style>
+{% endblock %}
+
+{% block app %}
+    <div class="code">
+        {% if random_numbers %}
+            <h1>{{ random_numbers }}</h1>
+        {% endif %}
+    </div>
+{% endblock app %}
