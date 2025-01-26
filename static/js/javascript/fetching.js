@@ -14,9 +14,12 @@ class Fetching {
     } = {}) {
         try {
             const response = (
-                is_pagination 
-                ? await fetch(`${this.baseUrl}${endpoint}?page=${pagination_page}`) 
-                : await fetch(`${this.baseUrl}${endpoint}`))
+                is_pagination
+                ? await fetch(`${this.baseUrl}${endpoint}?page=${pagination_page}`)
+                : await fetch(`${this.baseUrl}${endpoint}`)
+            );
+
+            console.log(response)
 
             if(!response.ok) {
                 throw new Error(`Response Status: ${response.status}`)

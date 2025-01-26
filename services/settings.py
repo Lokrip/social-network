@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'channels',
     'corsheaders',
     'django_cleanup.apps.CleanupConfig',
@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'django_countries',
     'debug_toolbar',
     'mptt',
-    
+
     'database.apps.DatabaseConfig',
     'home.apps.HomeConfig',
     'account.apps.AccountConfig',
@@ -161,9 +161,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = '/'
-
-
+LOGIN_URL = '/account/login/'
 
 #Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

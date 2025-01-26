@@ -25,7 +25,7 @@ class PostCardGenerator {
         </div>
         <div class="card-body d-block p-0 mb-3">
             <div class="row ps-2 pe-2">
-                <div class="col-sm-12 p-1"><a href="" data-lightbox="roadtr"><img src="${data.product_images.image}" class="rounded-3 w-100" alt="image"></a></div>                                        
+                <div class="col-sm-12 p-1"><a href="" data-lightbox="roadtr"><img src="${data.product_images.image}" class="rounded-3 w-100" alt="image"></a></div>
             </div>
         </div>
         <div class="card-body d-flex p-0">
@@ -46,7 +46,7 @@ class PostCardGenerator {
             <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
         </div>
     </div>`
-        
+
         return html;
     }
 }
@@ -64,7 +64,7 @@ class PostCardImage extends PostCardGenerator {
         </div>
         <div class="card-body d-block p-0 mb-3">
             <div class="row ps-2 pe-2">
-                <div class="col-sm-12 p-1"><a href="" data-lightbox="roadtr"><img src="${data.product_images[0].image}" class="rounded-3 w-100" alt="image"></a></div>                                        
+                <div class="col-sm-12 p-1"><a href="" data-lightbox="roadtr"><img src="${data.product_images[0].image}" class="rounded-3 w-100" alt="image"></a></div>
             </div>
         </div>
         <div class="card-body d-flex p-0">
@@ -85,7 +85,7 @@ class PostCardImage extends PostCardGenerator {
             <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
         </div>
     </div>`
-        
+
         return html;
     }
 }
@@ -135,7 +135,7 @@ class PostCardImages extends PostCardGenerator {
                         <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
                     </div>
                 </div>`
-        
+
         return html;
     }
 }
@@ -241,7 +241,7 @@ class Pagination  {
                     this.isFetching = false;
                 }
             }
-        }   
+        }
 
         window.addEventListener("scroll", scrollHandler)
         return () => window.removeEventListener("scroll", scrollHandler);
@@ -258,7 +258,7 @@ class Post {
         }
 
         this.pagination = pagination;
-        this.postList = postList;   
+        this.postList = postList;
         this.fetcher = new PostFetching();
 
         this.init()
@@ -283,7 +283,7 @@ class Post {
 
     enableScrollPagination() {
         this.pagination.paginate((posts) => this.renderPosts(posts));
-    }   
+    }
 
     renderPosts(posts = []) {
         posts.forEach(post => {
@@ -302,5 +302,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const pagination = new Pagination(fetcher);
     const post = new Post(postListCard, pagination)
 })
+
 
 

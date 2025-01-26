@@ -17,7 +17,7 @@
         <!-- Custom Stylesheet -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/emoji.css' %}">
-        
+
         <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
     {% endblock styles %}
 
@@ -63,10 +63,10 @@
 
     <div class="preloader"></div>
 
-    
+
     {% block app %}
         {% include "includes/model/message.html" %}
-        
+
         {% block header %}
             {% include "includes/header/header.html" %}
         {% endblock header %}
@@ -74,7 +74,7 @@
         {% block sidebar %}
             {% include "includes/sidebar/sidebar.html" %}
         {% endblock sidebar %}
-        
+
         {% block content %}
         {% endblock content  %}
 
@@ -86,7 +86,7 @@
 
         {% include "includes/model/story.html" %}
         {% include "includes/model/story-create.html" %}
-        {% include "includes/model/chat.html" %}        
+        {% include "includes/model/chat.html" %}
 
     {% endblock app %}
 
@@ -95,18 +95,19 @@
         <script src="{% static "js/plugin.js" %}"></script>
         <script src="{% static "js/lightbox.js" %}"></script>
         <script src="{% static "js/scripts.js" %}"></script>
+        <script src="{% static 'js/javascript/fetching.js' %}"></script>
         <script src="{% static "js/javascript/event.js" %}"></script>
         <script src="{% static "js/javascript/create.js" %}"></script>
         <script src="{% static "js/javascript/notification.js" %}"></script>
-        <script src="{% static 'js/javascript/fetching.js' %}"></script>
         <script src="{% static "js/javascript/friends.js" %}"></script>
         <script src="{% static "js/javascript/profile.js" %}"></script>
+        <script src="{% static "js/javascript/chat.js" %}"></script>
         <script src="{% static 'js/javascript/story.js' %}"></script>
         <script src="{% static 'js/javascript/post.js' %}"></script>
         <script src="{% static "js/javascript/websocket.js" %}"></script>
         <script src="{% static "js/javascript/index.js" %}"></script>
-        {% block addScripts %}
-    
+    {% block addScripts %}
+
         {% endblock addScripts %}
     {% endblock %}
 </body>

@@ -1,19 +1,15 @@
 from django.views.generic import View
 from django.shortcuts import render
-from django.db.models import Prefetch
+
+from database.models import Post
 
 
-from database.models import (
-    Post,
-    PostVideo
-)
-
-class SlicesHome(View): 
-    def get(self, request): 
+class SlicesHome(View):
+    def get(self, request):
         slices = Post.objects.select_related(
             "user"
         ).prefetch_related(
-            "product_video", 
+            "product_video",
         ).filter(
             product_video__video__isnull=False
         ).order_by("-pk")

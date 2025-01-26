@@ -1,28 +1,28 @@
 <!-- navigation top-->
 <div class="nav-header bg-white shadow-xs border-0">
     <div class="nav-top">
-        <a href="index.html"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
+        <a href="{% url "social-home:home" %}"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
         <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
         <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
         <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
         <button class="nav-menu me-0 ms-2"></button>
     </div>
-    
+
     <form action="{% url 'social-home:home' %}" method="get" class="float-left header-search">
         <div class="form-group mb-0 icon-input">
             <button style="
-            all: unset; 
+            all: unset;
             cursor: pointer;
             " type="submit"><i class="feather-search font-sm text-grey-400"></i></button>
-            <input 
-                type="text" 
-                placeholder="Start typing to search.." 
+            <input
+                type="text"
+                placeholder="Start typing to search.."
                 name="q"
                 class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg"
             >
         </div>
     </form>
-    
+
     {% for navbar_item in navbar_header %}
         <a href="{{navbar_item.href}}" class="p-2 text-center ms-3 menu-icon center-menu-icon">
             <i class="{{navbar_item.icon}}"></i>
@@ -30,15 +30,15 @@
     {% endfor %}
 
     <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span id="dropdownNotification" class="dot-count"></span><i class="feather-bell font-xl text-current"></i></a>
-    
+
     <div id="list-notification-element" class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
-        
+
         <h4 class="fw-700 font-xss mb-4">Notification</h4>
         {% for notification in notifications %}
-        <div 
+        <div
             data-type-notification="{{notification.type}}"
-            data-username-sender="{{notification.sender.username}}" 
-            data-username-recipient="{{notification.recipient.username}}" 
+            data-username-sender="{{notification.sender.username}}"
+            data-username-recipient="{{notification.recipient.username}}"
             class="card bg-transparent-card w-100 border-0 ps-5 mb-3"
         >
             <img src="{{notification.sender.get_image}}" alt="user" class="w40 position-absolute left-0">
@@ -141,7 +141,7 @@
                     </label>
                 </li>
             </ul>
-            
+
             <div class="card bg-transparent-card border-0 d-block mt-3">
                 <h4 class="d-inline font-xssss mont-font fw-700">Header Background</h4>
                 <div class="d-inline float-right mt-1">
@@ -160,15 +160,15 @@
                     <label class="toggle toggle-dark"><input type="checkbox"><span class="toggle-icon"></span></label>
                 </div>
             </div>
-            
+
         </div>
     </div>
-    
+
     {% if request.user.is_authenticated %}
     <a href="{% url 'account:settings' %}" class="p-0 ms-3 menu-icon"><img style="border-radius: 50%; overflow: hidden; width: 40px; height: 40px;" src="{{request.user.get_image}}" alt="user" class="w40 mt--1"></a>
     {% else %}
     <a href="{% url 'account:login' %}" class="p-2 text-center ms-3 menu-icon"  aria-expanded="false"><i class="feather-log-out font-xl text-current"></i></a>
     {% endif %}
-    
+
 </div>
 <!-- navigation top -->
